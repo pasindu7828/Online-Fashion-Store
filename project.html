@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopping Cart</title>
+<style>
+  /* CSS for styling */
+  .product {
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+  }
+  .btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .btn:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+
+<!-- Product 1 -->
+<div class="product">
+  <h3>Product 1</h3>
+  <p>$10</p>
+  <button class="btn" onclick="addToCart('Product 1', 10)">Add to Cart</button>
+</div>
+
+<!-- Product 2 -->
+<div class="product">
+  <h3>Product 2</h3>
+  <p>$20</p>
+  <button class="btn" onclick="addToCart('Product 2', 20)">Add to Cart</button>
+</div>
+
+<!-- Product 3 -->
+<div class="product">
+  <h3>Product 3</h3>
+  <p>$30</p>
+  <button class="btn" onclick="addToCart('Product 3', 30)">Add to Cart</button>
+</div>
+
+<script>
+  // Function to add item to cart
+  function addToCart(productName, price) {
+    var cartItem = {
+      name: productName,
+      price: price
+    };
+    // Get existing cart items from localStorage
+    var cart = JSON.parse(localStorage.getItem('cart')) || [];
+    // Add new item to cart
+    cart.push(cartItem);
+    // Save updated cart to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+    // Redirect to cart page
+    window.location.href = 'cart.html';
+  }
+</script>
+
+</body>
+</html>

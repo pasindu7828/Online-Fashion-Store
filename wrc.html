@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Online Shopping Store</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+         <link rel="stylesheet" href="style.css">
+
+         <style>
+          body {
+            
+            margin: 0;
+            padding: 0;
+          }
+          .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+          }
+          .card {
+            width: 250px;
+            margin: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+          }
+          .card:hover {
+            transform: scale(1.05);
+          }
+          .card img {
+            width: 100%;
+            height: auto;
+          }
+          .card-content {
+            padding: 15px;
+          }
+          .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+          }
+          .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+          .btn-buy {
+            background-color: #1d02a3;
+            color: white;
+          }
+          .btn-cart {
+            background-color: #d72417;
+            color: white;
+          }
+          .btn:hover {
+            opacity: 0.8;
+          }
+
+          /* CSS for button styling */
+      .button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        transition: background-color 0.3s;
+      }
+    
+      .button:hover {
+        background-color: #0056b3;
+      }
+    
+      /* Additional styling for multiple buttons */
+      .button-secondary {
+        background-color: #6c757d;
+      }
+    
+      .button-secondary:hover {
+        background-color: #545b62;
+      }
+   
+        </style>
+
+    </head>
+
+    <body>
+        
+        <nav>
+            <img class="name" src="C:\Users\Pasindu Piyumal\Desktop\project\clothing.png"> 
+           
+            <ul class="sidebar"> 
+                <li><a class="active" href="homepage.html">HOME</a> </li>
+                <li><a href="men.html">MEN</a> </li>
+                <li><a href="women.html">WOMEN</a> </li>
+                <li><a href="kids.html">KIDS</a> </li>
+            
+                <li><a href="#">OFFERS</a> </li>
+                <li><a href="#">NEW ARRIVALS</a> </li>
+                <li><a href="login.html">LOGIN|SIGNUP</a> </li>
+                <div class="search-container">
+                    <input type="text" placeholder="Search...">
+                    <button type="submit">Search</button>
+                    <button type="submit">add cart</button>
+                </div>
+            </ul>
+                       
+        </nav>
+
+        <br>
+        <br>
+        <br>
+
+        <!-- HTML for buttons -->
+    <a href="men.html"><button class="button">Shirts</button></a>
+    <a href="men_tshirt.html"><button class="button button-secondary">T-Shit</button></a>
+    <a href="men_trouser.html"><button class="button">Trousers</button></a>
+   <a href="men_und.html"><button class="button button-secondary">Underwears</button></a>
+
+   <br>
+   <br>
+   <br>
+
+        <div class="container">
+          <div class="card">
+            <img src="images/men.jpg" alt="Image 1">
+            <div class="card-content">
+              <h3 style="font-family: Arial, Helvetica, sans-serif;">Price</h3><br>
+              <p style="font-family: Arial, Helvetica, sans-serif;">#0001</p>
+              <div class="btn-container">
+                <button class="btn btn-buy">Buy Now</button>
+                <button class="btn btn-cart" onclick="addToCart('#0001', 1800)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="images/men.jpg" alt="Image 2">
+            <div class="card-content">
+              <h3 style="font-family: Arial, Helvetica, sans-serif;">Price</h3><br>
+              <p style="font-family: Arial, Helvetica, sans-serif;">#0002</p>
+              <div class="btn-container">
+                <button class="btn btn-buy">Buy Now</button>
+                <button class="btn btn-cart" onclick="addToCart('#0002', 1500)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="images/men.jpg" alt="Image 3">
+            <div class="card-content">
+              <h3 style="font-family: Arial, Helvetica, sans-serif;">Price</h3><br>
+              <p style="font-family: Arial, Helvetica, sans-serif;">#0003</p>
+              <div class="btn-container">
+                <button class="btn btn-buy">Buy Now</button>
+                <button class="btn btn-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="images/men.jpg" alt="Image 4">
+            <div class="card-content">
+              <h3 style="font-family: Arial, Helvetica, sans-serif;">Price</h3><br>
+              <p style="font-family: Arial, Helvetica, sans-serif;">#0004</p>
+              <div class="btn-container">
+                <button class="btn btn-buy">Buy Now</button>
+                <button class="btn btn-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <br>
+        
+        <div class="container">
+            <div class="card">
+              <img src="images/men.jpg" alt="Image 1">
+              <div class="card-content">
+                <h3 style="font-family: Arial, Helvetica, sans-serif;">Price</h3><br>
+              <p style="font-family: Arial, Helvetica, sans-serif;">#0005</p>
+                <div class="btn-container">
+                  <button class="btn btn-buy">Buy Now</button>
+                  <button class="btn btn-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <img src="images/men.jpg" alt="Image 2">
+              <div class="card-content">
+              <h3 style="font-family: Arial, Helvetica, sans-serif;">Price</h3><br>
+              <p style="font-family: Arial, Helvetica, sans-serif;">#0006</p>
+                <div class="btn-container">
+                  <button class="btn btn-buy">Buy Now</button>
+                  <button class="btn btn-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <img src="images/men.jpg" alt="Image 3">
+              <div class="card-content">
+                <h3 style="font-family: Arial, Helvetica, sans-serif;">Price</h3><br>
+              <p style="font-family: Arial, Helvetica, sans-serif;">#0007</p>
+                <div class="btn-container">
+                  <button class="btn btn-buy">Buy Now</button>
+                  <button class="btn btn-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <img src="images/men.jpg" alt="Image 4">
+              <div class="card-content">
+                <h3 style="font-family: Arial, Helvetica, sans-serif;">Price</h3><br>
+              <p style="font-family: Arial, Helvetica, sans-serif;">#0008</p>
+                <div class="btn-container">
+                  <button class="btn btn-buy">Buy Now</button>
+                  <button class="btn btn-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <script>
+            // Function to add item to cart
+            function addToCart(productName, price) {
+              var cartItem = {
+                name: productName,
+                price: price
+              };
+              // Get existing cart items from localStorage
+              var cart = JSON.parse(localStorage.getItem('cart')) || [];
+              // Add new item to cart
+              cart.push(cartItem);
+              // Save updated cart to localStorage
+              localStorage.setItem('cart', JSON.stringify(cart));
+              // Redirect to cart page
+              window.location.href = 'cart5.html';
+            }
+          </script>
+
+          <br>
+          <br>
+          <br>
+
+          <footer>
+       
+            <div class="footercontainer">
+               
+                    <img class="name" src="C:\Users\Pasindu Piyumal\Desktop\project\clothing.png"> 
+                    <br>
+                    <p style="font-family: 'Times New Roman', Times, serif;color: aliceblue;">The No 1 Fashion Store</p>
+    
+                    <p style="font-family:'Times New Roman', Times, serif ;color: aliceblue;">in Sri Lanka</p>
+                    <div class="socialicons">
+                        <a href=""><i class="fa-brands fa-facebook"></i></a>
+                        <a href=""><i class="fa-brands fa-instagram"></i></a>
+                        <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href=""><i class="fa-brands fa-youtube"></i></a>
+                    </div>       
+              
+                
+                <div class="footernav">
+                    <ul>
+                        <li><a href="">About Us</a> </li>
+                        <li><a href="">Contract Us</a> </li>
+                        <li><a href="">Privacy Policy</a> </li>
+                        <li><a href="">Terms & Conditions</a> </li>
+                    </ul>
+                </div>
+        
+                
+            </div>
+            <div class="footerbottm">
+                <p style="font-family: 'Times New Roman', Times, serif;">Copyright @ 2024 - Style Vista - All Right Reserved. Concept,Design & Developed by Group No 03, SLIIT Kurunegala.</p>
+    
+            </div>
+        </footer>
+    
+    
+        </body>
+    </html>
+
+          
+

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="style.css">
+<title>User Profile</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  .contact-section {
+    display: flex;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  .contact-image {
+    flex: 1;
+    padding: 20px;
+  }
+  .contact-image img {
+    width: 100%;
+    border-radius: 10px 0 0 10px;
+  }
+  .contact-form {
+    flex: 1;
+    background-color: rgba(116, 229, 239, 0.279);
+    padding: 20px;
+  }
+  .contact-form h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    height: 150px;
+  }
+  .contact-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  .contact-form button:hover {
+    background-color: #a2bbd68b;
+  }
+</style>
+</head>
+      <!-- Copy This Nav Bar For Every Page -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="checkLoginStatus.js"></script>
+        <nav>
+            <img class="name" src="images/clothing.png"> 
+           
+            <ul class="sidebar"> 
+                <li><a class="active" href="homepage.html">HOME</a> </li>
+                <li><a href="men.html">MEN</a> </li>
+                <li><a href="women.html">WOMEN</a> </li>
+                <li><a href="kids.html">KIDS</a> </li>
+                <li><a href="cartCheckout.html">CART</a></li>
+                <li><a href="offers.html">OFFERS</a> </li>
+                <li><a href="nwa.html">NEW ARRIVALS</a> </li>
+                <li><a id ="loginStatus" href="AuthCheck.html">LOGIN|SIGNUP</a> </li>
+                <div class="search-container">
+                </div>
+            </ul>
+          </nav>
+        <!-- Up to here -->
+<body>
+  <script>
+  $(document).ready(function() {
+      // Function to check if user is logged in
+      function checkLoginStatus() {
+          $.ajax({
+              url: 'AuthCheck.php', // Change this to your actual PHP file path
+              type: 'GET',
+              dataType: 'json',
+              success: function(response) {
+                  if (response.loggedIn) {
+                      // User is logged in
+                      document.getElementById('loginStatus').innerText = 'UserID : ' + response.userID;
+                      document.getElementById('userName').innerText="" + response.username;
+
+                  } else {
+                      // User is not logged in
+                      document.getElementById('loginStatus').innerText = 'You are not logged in.';
+                  }
+              },
+              error: function(xhr, status, error) {
+                  // Handle error
+                  alert("Fatal Error:"+error);
+                  console.error('Error:', error);
+              }
+          });
+      }
+
+      // Function to logout
+      function killAcc() {
+          $.ajax({
+              url: 'Logout.php',
+              type: 'POST',
+              data: {killAcc: 1},
+              success: function() {
+                  window.location.replace("index.html");
+              },
+              error: function(xhr, status, error) {
+                  alert("Fatal Error:"+error);
+                  console.error('Error:', error);
+              }
+          });
+      }
+
+      function logout() {
+          $.ajax({
+              url: 'Logout.php',
+              type: 'GET',
+              success: function() {
+                  window.location.replace("index.html");
+              },
+              error: function(xhr, status, error) {
+                  alert("Fatal Error:"+error);
+                  console.error('Error:', error);
+              }
+          });
+      }
+
+      checkLoginStatus();
+      $('#logoutButton').click(function() {
+          logout();
+      });
+      checkLoginStatus();
+      $('#Nuke').click(function() {
+          killAcc();
+          alert("Account Deleted !")
+      });
+  });
+  </script>
+
+<div class="container">
+  <div class="contact-section">
+    <div class="contact-image">
+      <img src="images/clothing.png" alt="Contact Us Image">
+    </div>
+    <div class="contact-form">
+      <h2><span></span>Hi There,</h2>
+      <h1 id="userName"><span></span></h1>
+      <h3 id="loginStatus"></h3>
+      <!-- <h3 id="loginStatus">Checking Authentication Status...</h3> -->
+      <button id="logoutButton" type="button">Logout</button><br><br>
+      <button type="button" id="Nuke" style="background-color: red;">Delete Account /!\</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

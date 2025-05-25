@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="dashboard_appointment.css">
+  </head>
+  <body>
+
+    
+    <div class="grid-container">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="header-left">
+          <span class="material-icons-outlined">search</span>
+        </div>
+        <div class="header-right">
+          <span class="material-icons-outlined">notifications</span>
+          <span class="material-icons-outlined">email</span>
+          <span class="material-icons-outlined">account_circle<a href="adminsignup.html" target= "_blank"></span>
+        </div>
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-brand">
+            <span class="material-icons-outlined">admin</span> Admin
+          </div>
+          <span class="material-icons-outlined" onclick="closeSidebar()">Close</span>
+        </div>
+
+        <ul class="sidebar-list">
+          <li class="sidebar-list-item">
+            <a href="admin.html" target="_blank">
+              <span class="material-icons-outlined">dashboard</span> Dashboard
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="dashboard_appointment.html" target="_blank">
+              <span class="material-icons-outlined">inventory</span>Appointments
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="" target="_blank">
+              <span class="material-icons-outlined">category</span> Nutritionists
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">groups</span> Users
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">groups</span> Lab Technicians
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">report</span> Reports
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">payment</span> Payment
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">feedback</span> Review and Rating
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">category</span> Packages
+            </a>
+          </li>
+        </ul>
+      </aside>
+      <!-- End Sidebar -->
+    </div>
+  </body></html>

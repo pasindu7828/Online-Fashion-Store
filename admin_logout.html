@@ -1,0 +1,23 @@
+<html>
+    <title>Logging Out...</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <body>
+        <script>
+            $(document).ready(function(){
+                $.ajax({
+                    url: "admin_logout.php", // PHP script to call
+                    type: "GET", // or "POST" depending on your needs
+                    success: function(data){
+                        // If the call is successful, update the content of the admin_dashboard div
+                        alert("Logged Out !");
+                        window.location.href="index.html"
+                    },
+                    error: function(xhr, status, error) {
+                        // If there's an error, you can handle it here
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
