@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Your custom styles here */
+        .container7828 {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        .container7828 h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .container7828 form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .container7828 label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .container7828 input[type="text"],
+        .container7828 input[type="email"],
+        .container7828 input[type="text"],
+        .container7828 select,
+        .container7828 textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .container7828 textarea {
+            height: 150px;
+        }
+        .container7828 button[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+        .container7828 button[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <img class="name" src="images/clothing.png" alt="Logo">
+    <ul class="sidebar"> 
+        <li><a class="active" href="homepage.html">HOME</a></li>
+        <li><a href="men.html">MEN</a></li>
+        <li><a href="women.html">WOMEN</a></li>
+        <li><a href="kids.html">KIDS</a></li>
+        <li><a href="offers.html">OFFERS</a></li>
+        <li><a href="nwa.html">NEW ARRIVALS</a></li>
+        <li><a href="login.html">LOGIN|SIGNUP</a></li>
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+            <button type="submit">Search</button>
+            <button type="submit">add cart</button>
+        </div>
+    </ul>
+</nav>
+
+<div class="container7828">
+    <h2>Product Review</h2>
+    <form id="review-form">
+        <div class="name">
+            <label for="name">Product Name</label>
+            <input type="text" name="Pname" id="name" placeholder="Enter Product Name">
+        </div>
+        <div class="rating">
+            <label for="rating">Rating:</label>
+            <select name="rating" id="rating">
+                <option value="5">5 Stars</option>
+                <option value="4">4 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="2">2 Stars</option>
+                <option value="1">1 Star</option>
+            </select>
+        </div>
+        <div class="email">
+            <label for="email">Email:</label><br>
+            <input type="email" name="email" id="email" placeholder="Enter your email address"><br>
+            <p>Please make sure to enter the email you used during checkout to submit a certified review.</p><br>
+        </div>
+        <div class="name">
+            <label for="name">Your Name:</label>
+            <input type="text" name="name" id="name" placeholder="Enter your name">
+        </div>
+        <div class="title">
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title" placeholder="Enter a title for your review">
+        </div>
+        <div class="comment">
+            <label for="comment">Comment:</label>
+            <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Write your review here"></textarea>
+        </div>
+        <div class="submit7828">
+            <button type="submit">Submit Review</button>
+        </div>
+    </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('#review-form').submit(function(event){
+        event.preventDefault(); // Prevent default form submission
+
+        // Serialize form data
+        var formData = $(this).serialize();
+        $.ajax({
+            type: 'POST',
+            url: 'review.php',
+            data: formData,
+            success: function(response){
+                // Display success message
+                alert(response);
+            },
+            error: function(xhr, status, error){
+                // Display error message
+                alert('Error: ' + error);
+            }
+        });
+    });
+});
+</script>
+
+
+<footer>
+    <div class="footercontainer">
+        <img class="name" src="images/clothing.png" alt="Logo">
+        <br>
+        <p>The No 1 Fashion Store</p>
+        <p>in Sri Lanka</p>
+        <div class="socialicons">
+            <a href=""><i class="fab fa-facebook"></i></a>
+            <a href=""><i class="fab fa-instagram"></i></a>
+            <a href=""><i class="fab fa-whatsapp"></i></a>
+            <a href=""><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+    <div class="footernav">
+        <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contract Us</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="tms.html">Terms & Conditions</a></li>
+        </ul>
+    </div>
+</footer>
+
+</body>
+</html>
