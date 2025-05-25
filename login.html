@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Online Shopping Store</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+         <link rel="stylesheet" href="style.css">
+         <link rel="loginsheet" href="log.css">
+        <style>
+         .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 80%;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+          }
+          .form-container {
+            width: 45%;
+            padding: 20px;
+          }
+          input[type="text"],
+          input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+          }
+          button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+          }
+          button:hover {
+            background-color: #0056b3;
+          }
+          .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+          
+        </style>
+
+         
+
+    </head>
+
+    <body>
+        
+        <nav>
+            <img class="name" src="images/clothing.png"> 
+           
+            <ul class="sidebar"> 
+                <li><a class="active" href="homepage.html">Home</a> </li>
+                <li><a href="kids.html">men</a> </li>
+                <li><a href="women.html">women</a> </li>
+                <li><a href="kids.html">kids</a> </li>
+                
+                <li><a href="offers.html">offers</a> </li>
+                <li><a href="nwa.html">new arrivals</a> </li>
+                <li><a href="login.html">Login|Signin</a> </li>
+                <!--<div class="search-container">
+                    <input type="text" placeholder="Search...">
+                    <button type="submit">Search</button>
+                </div>-->
+            </ul>
+            
+        </nav>
+        <br>
+        <br>
+        <br>
+
+        <div class="container">
+            <div class="form-container">
+              <h2 style="font-family: Arial, Helvetica, sans-serif;">Login</h2>
+              <form id="loginForm" action="login.php" method="post">
+                <input type="text" name="username" id="loginUsername" placeholder="Username" required><br>
+                <input type="password" name="password" id="loginPassword" placeholder="Password" required><br>
+                <button type="submit">Login</button>
+            </form>
+              <div class="options">
+                <div>
+                  <input type="checkbox" id="loginRememberMe">
+                  <label style="font-family: Arial, Helvetica, sans-serif;" for="loginRememberMe">Remember me</label>
+                </div>
+                <div>
+                  <a style="font-family: Arial, Helvetica, sans-serif;" href="#" onclick="forgotPassword('login')">Forgot Password?</a>
+                </div>
+                
+              </div>
+              <p style="font-family: Arial, Helvetica, sans-serif;;">Don't have an account? <a href="#" onclick="switchForm()">Sign Up</a></p>
+            </div>
+          
+            <div class="form-container">
+              <h2 style="font-family: Arial, Helvetica, sans-serif;">Sign Up</h2>
+              <form id="signupForm">
+                <input type="text" id="signupUsername" placeholder="Name" required><br>
+                <input type="text" id="signupEmail" placeholder="Email" required><br>
+                <input type="text" id="signupTelephone" placeholder="Telephone" required><br>
+                <input type="text" id="signupAddress" placeholder="Address" required><br>
+                <input type="text" id="signupPostalCode" placeholder="Postal Code" required><br>
+                <input type="text" id="signupOTP" placeholder="Account Number & OTP" required><br>
+                <input type="password" id="signupPassword" placeholder="Password" required><br>
+                <input type="password" id="signupPassword" placeholder="Confirm Password" required><br>
+                
+                <button type="submit">Sign Up</button>
+              </form>
+              <div class="options">
+                <div>
+                  <input type="checkbox" id="signupRememberMe">
+                  <label style="font-family: Arial, Helvetica, sans-serif;" for="signupRememberMe">Remember me</label>
+                </div>
+              </div>
+              <p style="font-family: Arial, Helvetica, sans-serif;">Already have an account? <a href="#" onclick="switchForm()">Login</a></p>
+            </div>
+          </div>
+          
+          <script>
+            function forgotPassword(formType) {
+              alert("Forgot Password functionality will be implemented soon for " + formType + " form!");
+              // Implement forgot password functionality here for the specific form
+            }
+          
+            function switchForm() {
+              var loginForm = document.getElementById("loginForm");
+              var signupForm = document.getElementById("signupForm");
+              loginForm.reset();
+              signupForm.reset();
+              loginForm.parentElement.style.display = loginForm.parentElement.style.display === "none" ? "flex" : "none";
+              signupForm.parentElement.style.display = signupForm.parentElement.style.display === "none" ? "flex" : "none";
+            }
+          
+            document.getElementById("loginForm").addEventListener("submit", function(event) {
+              event.preventDefault();
+              var username = document.getElementById("loginUsername").value;
+              var password = document.getElementById("loginPassword").value;
+              var rememberMe = document.getElementById("loginRememberMe").checked;
+          
+              // // Implement login functionality here
+              // console.log("Login Username:", username);
+              // console.log("Login Password:", password);
+              // console.log("Login Remember Me:", rememberMe);
+              // console.log("Doin Some testin here");
+              $.ajax({
+                  type: "POST",
+                  url: "login.php",
+                  data: {
+                      username: username,
+                      password: password,
+                      rememberMe: rememberMe
+                  },
+                  success: function(response, status, xhr) {
+                      console.log("Login successful");
+                      if (xhr.status == 200){
+                        alert("Login successful, Welcome " + username);
+                        window.location.href = 'index.html';
+                      }
+                      // Redirect user or perform other actions after successful login
+                  },
+                  error: function(xhr, status, error) {
+                      console.error("Login failed: " + error);
+                      alert("Login Failed, User Not Found !")
+                      // Handle error scenarios
+                  }
+              });
+            });
+          
+            document.getElementById("signupForm").addEventListener("submit", function(event) {
+              event.preventDefault();
+              var username = document.getElementById("signupUsername").value;
+              var password = document.getElementById("signupPassword").value;
+              var rememberMe = document.getElementById("signupRememberMe").checked;
+              var telephoneNo = document.getElementById("signupTelephone").value;
+              var address = document.getElementById("signupAddress").value;
+              var PostCode = document.getElementById("signupPostalCode").value;
+              var OTP = document.getElementById("signupOTP").value;
+              // Implement sign-up functionality here
+              // console.log("Signup Username:", username);
+              // console.log("Signup Password:", password);
+              // console.log("Signup Remember Me:", rememberMe);
+              $.ajax({
+                  type: "POST",
+                  url: "signup.php",
+                  data: {
+                      username: username,
+                      password: password,
+                      rememberMe: rememberMe,
+                      telephone: telephoneNo,
+                      address : address,
+                      postCode : PostCode,
+                      OTP : OTP
+                  },
+                  success: function(response) {
+                      console.log("Signup successful");
+                      alert("Signup successful, Please Log Back In " + username);
+                      window.location.href = 'login.html';
+                      // Redirect user or perform other actions after successful login
+                  },
+                  error: function(xhr, status, error) {
+                      console.error("SignUp failed: " + error);
+                      alert("Fatal Error ! : SignUp");
+                      // Handle error scenarios
+                  }
+              });
+            });
+          </script>
+           <br>
+           <br>
+           <br>
+           <br>
+           
+           <footer>
+       
+            <div class="footercontainer">
+               
+                    <img class="name" src="images/clothing.png"> 
+                    <br>
+                    <p style="font-family: 'Times New Roman', Times, serif;color: aliceblue;">The No 1 Fashion Store</p>
+    
+                    <p style="font-family:'Times New Roman', Times, serif ;color: aliceblue;">in Sri Lanka</p>
+                    <div class="socialicons">
+                        <a href=""><i class="fa-brands fa-facebook"></i></a>
+                        <a href=""><i class="fa-brands fa-instagram"></i></a>
+                        <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href=""><i class="fa-brands fa-youtube"></i></a>
+                    </div>       
+              
+                
+                <div class="footernav">
+                    <ul>
+                        <li><a href="about.html">About Us</a> </li>
+                        <li><a href="contact.html">Contract Us</a> </li>
+                        <li><a href="privacy.html">Privacy Policy</a> </li>
+                        <li><a href="tms.html">Terms & Conditions</a> </li>
+                    </ul>
+                </div>
+        
+                
+            </div>
+            <div class="footerbottm">
+                <p style="font-family: 'Times New Roman', Times, serif;">Copyright @ 2024 - Style Vista - All Right Reserved. Concept,Design & Developed by Group No 03, SLIIT Kurunegala.</p>
+    
+            </div>
+        </footer>
+    
+
+    </body>
+</html>

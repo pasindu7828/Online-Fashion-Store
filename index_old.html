@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login & Sign Up</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('background.jpg'); /* Replace 'background.jpg' with your image path */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  .form-container {
+    width: 45%;
+    padding: 20px;
+  }
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  .options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="form-container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <input type="text" id="loginUsername" placeholder="Username" required><br>
+      <input type="password" id="loginPassword" placeholder="Password" required><br>
+      <button type="submit">Login</button>
+    </form>
+    <div class="options">
+      <div>
+        <input type="checkbox" id="loginRememberMe">
+        <label for="loginRememberMe">Remember me</label>
+      </div>
+      <div>
+        <a href="#" onclick="forgotPassword('login')">Forgot Password?</a>
+      </div>
+    </div>
+    <p style="font-family: Arial, Helvetica, sans-serif;">Don't have an account? <a href="#" onclick="switchForm()">Sign Up</a></p>
+  </div>
+
+  <div class="form-container">
+    <h2>Sign Up</h2>
+    <form id="signupForm">
+      <input type="text" id="signupUsername" placeholder="Name" required><br>
+      <input type="password" id="signupPassword" placeholder="Password" required><br>
+      <input type="text" id="signupUsername" placeholder="Name" required><br>
+      <input type="text" id="signupUsername" placeholder="Name" required><br>
+      <input type="text" id="signupUsername" placeholder="Name" required><br>
+      <input type="text" id="signupUsername" placeholder="Name" required><br>
+      <input type="text" id="signupUsername" placeholder="Name" required><br>
+
+      <button type="submit">Sign Up</button>
+    </form>
+    <div class="options">
+      <div>
+        <input type="checkbox" id="signupRememberMe">
+        <label for="signupRememberMe">Remember me</label>
+      </div>
+    </div>
+    <p>Already have an account? <a href="#" onclick="switchForm()">Login</a></p>
+  </div>
+</div>
+
+<script>
+  function forgotPassword(formType) {
+    alert("Forgot Password functionality will be implemented soon for " + formType + " form!");
+    // Implement forgot password functionality here for the specific form
+  }
+
+  function switchForm() {
+    var loginForm = document.getElementById("loginForm");
+    var signupForm = document.getElementById("signupForm");
+    loginForm.reset();
+    signupForm.reset();
+    loginForm.parentElement.style.display = loginForm.parentElement.style.display === "none" ? "flex" : "none";
+    signupForm.parentElement.style.display = signupForm.parentElement.style.display === "none" ? "flex" : "none";
+  }
+
+  document.getElementById("loginForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    var username = document.getElementById("loginUsername").value;
+    var password = document.getElementById("loginPassword").value;
+    var rememberMe = document.getElementById("loginRememberMe").checked;
+
+    // Implement login functionality here
+    console.log("Login Username:", username);
+    console.log("Login Password:", password);
+    console.log("Login Remember Me:", rememberMe);
+  });
+
+  document.getElementById("signupForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    var username = document.getElementById("signupUsername").value;
+    var password = document.getElementById("signupPassword").value;
+    var rememberMe = document.getElementById("signupRememberMe").checked;
+
+    // Implement sign-up functionality here
+    console.log("Signup Username:", username);
+    console.log("Signup Password:", password);
+    console.log("Signup Remember Me:", rememberMe);
+  });
+</script>
+
+</body>
+</html>

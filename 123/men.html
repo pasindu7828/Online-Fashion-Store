@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Online Shopping Store</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+
+    </head>
+
+    <body>
+        
+        <nav>
+            <img class="name" src="C:\Users\Pasindu Piyumal\Desktop\project\clothing.png"> 
+           
+            <ul class="sidebar"> 
+                <li><a class="active" href="homepage.html">Home</a> </li>
+                <li><a href="men.html">men</a> </li>
+                <li><a href="">women</a> </li>
+                <li><a href="#">kids</a> </li>
+                <li><a href="#">teens</a> </li>
+                <li><a href="#">jewellary</a> </li>
+                <li><a href="#">offers</a> </li>
+                <li><a href="#">new arrivals</a> </li>
+                <li><a href="#">Login|Signin</a> </li>
+                <div class="search-container">
+                    <input type="text" placeholder="Search...">
+                    <button type="submit">Search</button>
+                </div>
+            </ul>
+            
+            
+            
+            
+        </nav>
+    
+    <br>
+    <br>
+
+    
+    <br>
+    <br>
+    
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Example</title>
+    <style>
+      /* CSS for button styling */
+      .button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        transition: background-color 0.3s;
+      }
+    
+      .button:hover {
+        background-color: #0056b3;
+      }
+    
+      /* Additional styling for multiple buttons */
+      .button-secondary {
+        background-color: #6c757d;
+      }
+    
+      .button-secondary:hover {
+        background-color: #545b62;
+      }
+    </style>
+    </head>
+    <body>
+    
+    <!-- HTML for buttons -->
+    <a href="fashion.html"><button class="button">Shirts</button></a>
+    <button class="button button-secondary">T-Shit</button>
+    <button class="button">Sarongs</button>
+    <button class="button button-secondary">Jeans</button>
+    <button class="button">Shoerts</button>
+    <button class="button button-secondary">Trousers</button>
+    </body>
+    </html>
+    
+
+    <br>
+    <br>
+
+    <div class="kidswear">
+        <div class="kids" data_-name="cloth">
+            <img src="C:\Users\Pasindu Piyumal\Downloads\resize-17141152954938657240304505279GRY1LadiesSkirtFashionBugSrilankacompressed300x382.jpg" alt=""/>
+            <div class="kidbody">
+                <p>product 1</p>
+                <p class="kidtext">Rs.1500.00</p><br>
+                <button class="button">Buy Now</button>
+                <button class="button" onclick="addToCart('Product 1', 1500)">Add Cart</button>
+            </div>
+
+        </div> 
+        
+        <div class="kids" data_-name="cloth">
+            <img src="C:\Users\Pasindu Piyumal\Downloads\resize-17141155091050320055TW13090scaled75.jpg" alt=""/>
+            <div class="kidbody">
+                <p>product 2</p>
+                <p class="kidtext">Rs.1800.00</p><br>
+                <button class="button">Buy Now</button>
+                <button class="button" onclick="addToCart('Product 2', 1800)">Add Cart</button>
+            </div>
+
+        </div>
+
+
+        <div class="kids" data_-name="cloth">
+            <img src="file:///C:/Users/Pasindu%20Piyumal/Desktop/project/men.jpg" alt=""/>
+            <div class="kidbody">
+                <p class="kidtext">Rs.1500.00</p><br>
+                <button class="button">Buy Now</button>
+                <button class="button">Add Cart</button> 
+
+            </div>
+
+        </div>
+    </div>
+
+    <br>
+
+    <div class="kidswear">
+        <div class="kids" data_-name="cloth">
+            <img src="file:///C:/Users/Pasindu%20Piyumal/Desktop/project/men.jpg" alt=""/>
+            <div class="kidbody">
+                <p class="kidtext">Rs.1500.00</p><br>
+                <button class="button">Buy Now</button>
+                <button class="button">Add Cart</button>
+            </div>
+
+        </div> 
+        
+        <div class="kids" data_-name="cloth">
+            <img src="file:///C:/Users/Pasindu%20Piyumal/Desktop/project/men.jpg" alt=""/>
+            <div class="kidbody">
+                <p class="kidtext">Rs.1500.00</p><br>
+                <button class="button">Buy Now</button>
+                <button class="button">Add Cart</button>
+            </div>
+
+        </div>
+
+
+        <div class="kids" data_-name="cloth">
+            <img src="file:///C:/Users/Pasindu%20Piyumal/Desktop/project/men.jpg" alt=""/>
+            <div class="kidbody">
+                <p class="kidtext">Rs.1500.00</p><br>
+                <a href="fashion.html"><button class="button">Buy Now</button></a>
+                <a href="practice.html"><button class="button">Add Cart</button></a>
+                
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Function to add item to cart
+        function addToCart(productName, price) {
+          var cartItem = {
+            name: productName,
+            price: price
+          };
+          // Get existing cart items from localStorage
+          var cart = JSON.parse(localStorage.getItem('cart')) || [];
+          // Add new item to cart
+          cart.push(cartItem);
+          // Save updated cart to localStorage
+          localStorage.setItem('cart', JSON.stringify(cart));
+          // Redirect to cart page
+          window.location.href = 'cart5.html';
+        }
+      </script>
+      
+
+    <br>
+    <br>
+    <hr>
+    <br>
+
+    <footer>
+       
+        <div class="footercontainer">
+           
+                <img class="name" src="C:\Users\Pasindu Piyumal\Desktop\project\clothing.png"> 
+                <br>
+                <p style="font-family: 'Times New Roman', Times, serif;color: aliceblue;">The No 1 Fashion Store</p>
+
+                <p style="font-family:'Times New Roman', Times, serif ;color: aliceblue;">in Sri Lanka</p>
+                <div class="socialicons">
+                    <a href=""><i class="fa-brands fa-facebook"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram"></i></a>
+                    <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href=""><i class="fa-brands fa-youtube"></i></a>
+                </div>       
+          
+            
+            <div class="footernav">
+                <ul>
+                    <li><a href="">About Us</a> </li>
+                    <li><a href="">Contract Us</a> </li>
+                    <li><a href="">Privacy Policy</a> </li>
+                    <li><a href="">Terms & Conditions</a> </li>
+                </ul>
+            </div>
+    
+            
+        </div>
+        <div class="footerbottm">
+            <p style="font-family: 'Times New Roman', Times, serif;">Copyright @ 2024 - Style Vista - All Right Reserved. Concept,Design & Developed by Group No 03, SLIIT Kurunegala.</p>
+
+        </div>
+    </footer>
+
+
+    </body>
+</html>

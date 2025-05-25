@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Online Shopping Store</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+         <link rel="stylesheet" href="piyu.css">
+         <link rel="stylesheet" href="style.css">
+         <style>
+          body {
+            
+            margin: 0;
+            padding: 0;
+          }
+          .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+          }
+          .card {
+            width: 250px;
+            margin: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+          }
+          .card:hover {
+            transform: scale(1.05);
+          }
+          .card img {
+            width: 100%;
+            height: auto;
+          }
+          .card-content {
+            padding: 15px;
+          }
+          .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+          }
+          .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+          .btn-buy {
+            background-color: #1d02a3;
+            color: white;
+          }
+          .btn-cart {
+            background-color: #d72417;
+            color: white;
+          }
+          .btn:hover {
+            opacity: 0.8;
+          }
+
+          /* CSS for button styling */
+      .button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        transition: background-color 0.3s;
+      }
+    
+      .button:hover {
+        background-color: #0056b3;
+      }
+    
+      /* Additional styling for multiple buttons */
+      .button-secondary {
+        background-color: #6c757d;
+      }
+    
+      .button-secondary:hover {
+        background-color: #545b62;
+      }
+
+      
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    label {
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    input[type="text"],
+    input[type="number"],
+    select {
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    input[type="submit"],
+    input[type="button"] {
+        padding: 10px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover,
+    input[type="button"]:hover {
+        background-color: #45a049;
+    }
+
+   
+        </style>
+        </style>
+         <style>
+            body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    label {
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    select {
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    input[type="submit"],
+    input[type="button"] {
+        padding: 10px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover,
+    input[type="button"]:hover {
+        background-color: #45a049;
+    }
+    
+   
+        </style>
+
+    </head>
+
+    <body>
+        
+        <nav>
+            <img class="name" src="images/clothing.png"> 
+           
+            <ul class="sidebar"> 
+                <li><a class="active" href="homepage.html">HOME</a> </li>
+                <li><a href="men.html">MEN</a> </li>
+                <li><a href="women.html">WOMEN</a> </li>
+                <li><a href="kids.html">KIDS</a> </li>
+            
+                <li><a href="offers.html">OFFERS</a> </li>
+                <li><a href="nwa.html">NEW ARRIVALS</a> </li>
+                <li><a href="login.html">LOGIN|SIGNUP</a> </li>
+                <div class="search-container">
+                    <input type="text" placeholder="Search...">
+                    <button type="submit">Search</button>
+                    <button type="submit">add cart</button>
+                </div>
+            </ul>
+                       
+        </nav>
+
+        <br>
+        <br>
+
+        
+
+</head>
+<body>
+<div class="container">
+    <h2>Payment Details</h2>
+    <form id="paymentForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="tel">Telephone Number:</label>
+        <input type="tel" id="tel" name="tel" required>
+        <label for="payment-method">Payment Method:</label>
+        <select id="payment-method" name="payment-method">
+            <option value="credit-card">Credit Card</option>
+            <option value="debit-card">Debit Card</option>
+            <option value="bank-transfer">Bank Transfer</option>
+        </select>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+        <label for="postal-code">Postal Code:</label>
+        <input type="text" id="postal-code" name="postal-code" required>
+        <label for="bank-account">Bank Account Number:</label>
+        <input type="text" id="bank-account" name="bank-account" required>
+        <label for="otp">OTP Number:</label>
+        <input type="hidden" id="totalCartItemsPrice">
+        <input type="hidden" id="CartProduct">
+        <input type="hidden" id="UserID">
+        <input type="number" id="otp" name="otp" required>
+        <input type="submit" value="Pay Now"><br>
+        <input type="button" value="Cancel Payment">
+    </form>
+</div>
+
+
+  <script>
+    document.getElementById("paymentForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent the default form submission
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      var nameElement = document.getElementById("name").value;
+      var emailElement = document.getElementById("email").value;
+      var telElement = document.getElementById("tel").value;
+      var paymentMethodElement = document.getElementById("payment-method").value;
+      var addressElement = document.getElementById("address").value;
+      var postalCodeElement = document.getElementById("postal-code").value;
+      var bankAccountElement = document.getElementById("bank-account").value;
+      var otpElement = document.getElementById("otp").value;
+      var User = "";
+      var productPrice = 0;
+      var productName = "";
+      var priceElement = 0;
+      
+      var userId = urlParams.get('userId');
+      var userIDBackup = "";
+      const cartStat = urlParams.get('userCartStat');
+
+      // Function to clear cart
+      function clearCart() {
+        $.ajax({
+          url: 'ClearCart.php',
+          type: 'GET',
+          success: function(response) {
+            var total_price = response.total_price;
+            console.log("Cart Cleared! Total Price: " + total_price);
+            // window.location.replace("index.html");
+          },
+          error: function(xhr, status, error) {
+            alert("Fatal Error: " + error);
+            console.error('Error:', error);
+          }
+        });
+      }
+
+      // Function to read temporary item
+      function readtempItem() {
+        console.log("Reached Here");
+        $.ajax({
+          url: 'tempItem.php',
+          type: 'GET',
+          dataType: 'json',
+          success: function(response) {
+            if (cartStat == "notpaynow") {
+              productName = response.product_name;
+              productPrice = response.total_price;
+              userIDBackup = response.UserID;
+              priceElement = productPrice;
+              if (userId == "noUser"){
+                userId = userIDBackup;
+              }
+              finalCall2();
+            } else {
+              readSessionVariables();
+            }
+          },
+          error: function(xhr, status, error) {
+            alert("Fatal Error: " + error);
+            console.error('Error:', error);
+          }
+        });
+      }
+
+      // Function to read session variables
+      function readSessionVariables() {
+        $.ajax({
+          url: 'readSession.php',
+          type: 'GET',
+          dataType: 'json',
+          success: function(response) {
+            productName = response.ProductName;
+            productPrice = response.Price;
+            priceElement = productPrice;
+            finalCall();
+          },
+          error: function(xhr, status, error) {
+            alert("Fatal Error: " + error);
+            console.error('Error:', error);
+          }
+        });
+      }
+
+      readtempItem();
+      console.log(priceElement);
+      console.log(productName);
+
+      // AJAX request to handle payment
+    function finalCall(){
+      $.ajax({
+        type: "POST",
+        url: "payment.php",
+        data: {
+          UserName: nameElement,
+          UserEmail: emailElement,
+          TelephoneNo: telElement,
+          PaymentMethod: paymentMethodElement,
+          Address: addressElement,
+          PostCode: postalCodeElement,
+          BankAcc: bankAccountElement,
+          OTP: otpElement,
+          UserID: userId,
+          ProductName: productName,
+          Price: priceElement
+        },
+        success: function(response, status, xhr) {
+          console.log("Payment Succeeded");
+          // Calling clearCart function after successful payment
+          alert("Payment Succeeded, Thank you !");
+          clearCart();
+          window.location.href = 'index.html'; // Redirect user after successful payment
+        },
+        error: function(xhr, status, error) {
+          console.error("An Error Occurred " + error);
+          alert("Fatal Error! Please try again later.");
+          // Handle error scenarios
+        }
+      });
+    }
+    function finalCall2(){
+      $.ajax({
+        type: "POST",
+        url: "payment_multi.php",
+        data: {
+          UserName: nameElement,
+          UserEmail: emailElement,
+          TelephoneNo: telElement,
+          PaymentMethod: paymentMethodElement,
+          Address: addressElement,
+          PostCode: postalCodeElement,
+          BankAcc: bankAccountElement,
+          OTP: otpElement,
+          UserID: userId,
+          ProductName: productName,
+          Price: priceElement
+        },
+        success: function(response, status, xhr) {
+          console.log("Payment Succeeded");
+          // Calling clearCart function after successful payment
+          alert("Payment Succeeded, Thank you !");
+          clearCart();
+          window.location.href = 'index.html'; // Redirect user after successful payment
+        },
+        error: function(xhr, status, error) {
+          console.error("An Error Occurred " + error);
+          alert("Fatal Error! Please try again later.");
+          // Handle error scenarios
+        }
+      });
+    }
+    });
+  </script>
+
+        <br>
+        <footer>
+       
+            <div class="footercontainer">
+               
+                    <img class="name" src="images/clothing.png"> 
+                    <br>
+                    <p style="font-family: 'Times New Roman', Times, serif;color: aliceblue;">The No 1 Fashion Store</p>
+    
+                    <p style="font-family:'Times New Roman', Times, serif ;color: aliceblue;">in Sri Lanka</p>
+                    <div class="socialicons">
+                        <a href=""><i class="fa-brands fa-facebook"></i></a>
+                        <a href=""><i class="fa-brands fa-instagram"></i></a>
+                        <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href=""><i class="fa-brands fa-youtube"></i></a>
+                    </div>       
+              
+                
+                <div class="footernav">
+                    <ul>
+                        <li><a href="about.html">About Us</a> </li>
+                        <li><a href="contact.html">Contract Us</a> </li>
+                        <li><a href="privacy.html">Privacy Policy</a> </li>
+                        <li><a href="tms.html">Terms & Conditions</a> </li>
+                    </ul>
+                </div>
+        
+                
+            </div>
+            <div class="footerbottm">
+                <p style="font-family: 'Times New Roman', Times, serif;">Copyright @ 2024 - Style Vista - All Right Reserved. Concept,Design & Developed by Group No 03, SLIIT Kurunegala.</p>
+    
+            </div>
+        </footer>
+    
+    
+        </body>
+    </html>
