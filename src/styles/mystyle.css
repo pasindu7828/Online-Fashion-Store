@@ -1,0 +1,34 @@
+body{
+    background-image  : url(file:///C:/Users/Pasindu%20Piyumal/Downloads/abstract-smooth-blur-orange-color-gradient-mesh-texture-lighting-effect-background-with-blank-space-for-website-banner-and-paper-card-decorative-modern-graphic-design-vector.jpg)
+}
+.logo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}
+
+h1{
+    font-size: x-large;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h3{
+    font-size: x-large;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.navbar{
+    list-style-type: none;
+    margin: 0%;
+    padding: 0%;
+}
+.ProductData{
+    background-color: aquamarine;
+}
+.productname{
+    text-align: center;
+}
+.productdetails{
+    text-align: left ;
+}

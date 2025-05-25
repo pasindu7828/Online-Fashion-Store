@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function logout() {
+            $.ajax({
+                url: 'adminSessionsReset.php',
+                type: 'GET',
+                success: function() {
+                },
+                error: function(xhr, status, error) {
+                    alert("System Login Failiure !:"+error);
+                    window.location.href="admin_login.html";
+                    console.error('Error:', error);
+                }
+            });
+        }
+        $(document).ready(function(){
+            $.ajax({
+                url: "check_admin_login.php", // PHP script to call
+                type: "GET", // or "POST" depending on your needs
+                success: function(data){
+                    // If the call is successful, update the content of the admin_dashboard div
+                    logout();
+                    console.log("Admin Logged In !");
+                },
+                error: function(xhr, status, error) {
+                    // If there's an error, you can handle it here
+                    window.location.href="admin_login.html";
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+        </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>User Payments</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            flex-direction: column; /* Added */
+        }
+        .contact-section {
+            margin-bottom: 20px; /* Added */
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 20px; /* Added */
+        }
+        .card {
+            width: 250px;
+            margin: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card h2 {
+            margin-top: 0;
+            padding: 15px;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+        }
+        .card p {
+            padding: 20px;
+            text-align: center;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        /* Input field styling */
+        #sqlQuery {
+            width: 400px;
+        }
+        /* Button styling */
+        #executeSQL {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #executeSQL:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <nav>
+        <img class="name" src="images/clothing.png"> 
+        <ul class="sidebar"> 
+            <li><a href="admin.html"><i class="fas fa-chart-bar"></i> Analytics</a></li>
+            <li><a href="admin_users.html"><i class="fas fa-users"></i> Users</a></li>
+            <li><a href="admin_payments.html" class="active"><i class="fas fa-money-bill-wave"></i> Payments</a></li>
+            <li><a href="admin_cusRev.html" ><i class="fas fa-comments"></i> Customer Reviews</a></li>
+            <li><a href="admin_productRev.html"><i class="fas fa-comments"></i> Product Reviews</a></li>
+            <li><a href="admin_settings.html"><i class="fas fa-cog"></i> Manage Admins</a></li>
+            <li><a href="admin_signup.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="contact-section" id="sqlSection"> <!-- Moved SQL section here -->
+            <input type="text" id="sqlQuery" placeholder="Enter SQL command">
+            <button id="executeSQL">Execute SQL</button>
+        </div>
+        <table id="paymentTable">
+            <thead>
+                <tr>
+                    <th>PaymentID</th>
+                    <th>UserName</th>
+                    <th>UserEmail</th>
+                    <th>TelephoneNo</th>
+                    <th>PaymentMethod</th>
+                    <th>Address</th>
+                    <th>PostCode</th>
+                    <th>BankAcc</th>
+                    <th>OTP</th>
+                    <th>UserID</th>
+                    <th>price</th>
+                </tr>
+            </thead>
+            <tbody id="paymentData">
+            </tbody>
+        </table>
+    </div>
+    <script>
+        $(document).ready(function(){
+            function executeSQLQuery(sqlQuery) {
+                $.ajax({
+                    type: "POST",
+                    url: "admin_payments.php",
+                    data: { sqlQuery: sqlQuery },
+                    dataType: "json",
+                    success: function(payments){
+                        $('#paymentData').empty();
+                        $.each(payments, function(index, payment){
+                            $('#paymentData').append('<tr>' +
+                                '<td>' + payment.PaymentID + '</td>' +
+                                '<td>' + payment.UserName + '</td>' +
+                                '<td>' + payment.UserEmail + '</td>' +
+                                '<td>' + payment.TelephoneNo + '</td>' +
+                                '<td>' + payment.PaymentMethod + '</td>' +
+                                '<td>' + payment.Address + '</td>' +
+                                '<td>' + payment.PostCode + '</td>' +
+                                '<td>' + payment.BankAcc + '</td>' +
+                                '<td>' + payment.OTP + '</td>' +
+                                '<td>' + payment.UserID + '</td>' +
+                                '<td>' + payment.price + '</td>' +
+                                '</tr>');
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error fetching payment data:", error);
+                        alert("Error fetching payment data!");
+                    }
+                });
+            }
+
+            $('#executeSQL').click(function() {
+                var sqlQuery = $('#sqlQuery').val().trim();
+                if (sqlQuery !== '') {
+                    executeSQLQuery(sqlQuery);
+                }
+            });
+
+            executeSQLQuery("SELECT * FROM payments");
+        });
+    </script>
+</body>
+</html>

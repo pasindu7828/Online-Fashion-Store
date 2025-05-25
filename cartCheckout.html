@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Cart Items</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="checkLoginStatus.js"></script>
+    <style>
+        .contact-form {
+            max-width: 800px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .contact-form h1 {
+            margin: 0 0 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: background-color 0.3s;
+        }
+        .cart-item {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .cart-item p {
+            margin: 0;
+            color: #555;
+        }
+        .cart-item p:first-child {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <img class="name" src="images/clothing.png"> 
+       
+        <ul class="sidebar"> 
+            <li><a class="active" href="homepage.html">HOME</a> </li>
+            <li><a href="men.html">MEN</a> </li>
+            <li><a href="women.html">WOMEN</a> </li>
+            <li><a href="kids.html">KIDS</a> </li>
+        
+            <li><a href="offers.html">OFFERS</a> </li>
+            <li><a href="nwa.html">NEW ARRIVALS</a> </li>
+            <li><a id ="loginStatus" href="AuthCheck.html">LOGIN|SIGNUP</a> </li>
+            <div class="search-container">
+            <input type="text" placeholder="Search...">
+            <button type="submit">Search</button>
+            <button type="submit">add cart</button>
+            </div>
+        </ul>
+        
+    </nav>
+    <div class="container">
+    <div class="contact-form">
+        <h1>Cart Items</h1>
+        <div id="cartItems"></div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function clearCart() {
+                $.ajax({
+                    url: 'ClearCart.php',
+                    type: 'GET',
+                    success: function() {
+                        alert("Cart Cleared !")
+                        window.location.replace("index.html");
+                    },
+                    error: function(xhr, status, error) {
+                        alert("Fatal Error:"+error);
+                        console.error('Error:', error);
+                    }
+                });
+            }
+      
+            $('#clearCart').click(function() {
+                clearCart();
+            });
+        });
+        </script>
+    <script>
+        $(document).ready(function(){
+            // Function to retrieve cart items using AJAX
+            function getCartItems(){
+                $.ajax({
+                    url: 'fetch_cart_items.php',
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function(response){
+                        if(response.success){
+                            displayCartItems(response.cartItems, response.UserName);
+                        } else {
+                            alert('Error: ' + response.message);
+                        }
+                    },
+                    error: function(xhr, status, error){
+                        console.error(xhr.responseText);
+                        alert('Error occurred while retrieving cart items. Please try again.');
+                    }
+                });
+            }
+
+            // Function to display cart items
+            function displayCartItems(cartItems, UserName){
+                var html = '';
+                var displayUserId = 'Cart Items For User : ' + UserName;
+
+                // Group items by ProductID and calculate total amount for each group
+                var groupedItems = {};
+                cartItems.forEach(function(item){
+                    if(!groupedItems[item.ProductID]){
+                        groupedItems[item.ProductID] = {
+                            ProductID: item.ProductID,
+                            totalAmount: 0,
+                            items: []
+                        };
+                    }
+                    groupedItems[item.ProductID].totalAmount += parseFloat(item.ItemAmount);
+                    groupedItems[item.ProductID].items.push(item);
+                });
+
+                // Display grouped items
+                for(var productId in groupedItems){
+                    var group = groupedItems[productId];
+                    html += '<div class="cart-item">';
+                    html += '<p>Product ID: ' + group.ProductID + '</p>';
+                    html += '<p>Item Amount: ' + group.totalAmount.toFixed() + '</p>';
+                    group.items.forEach(function(item){
+                        html += '<p>Item Size: ' + item.ItemSize + '</p>';
+                        html += '<p>Item Color: ' + item.ItemColor + '</p>';
+                        html += '<p>Item Price:  ' + item.price + '</p>';
+                    });
+                    html += '</div>';
+                }
+
+                $('#cartItems').html(html);
+                $('h1').text(displayUserId);
+            }
+            
+            getCartItems();
+        });
+    </script>
+    <button class="button" id="clearCart">Clear Cart</button>
+    <br><br>
+    <button class="button" onclick="window.location.href = 'payment.html?userId=' + 'noUser' + '&userCartStat=notpaynow';">Checkout</button>
+    </div>
+    <footer>
+       
+        <div class="footercontainer">
+           
+                <img class="name" src="images/clothing.png"> 
+                <br>
+                <p style="font-family: 'Times New Roman', Times, serif;color: aliceblue;">The No 1 Fashion Store</p>
+
+                <p style="font-family:'Times New Roman', Times, serif ;color: aliceblue;">in Sri Lanka</p>
+                <div class="socialicons">
+                    <a href=""><i class="fa-brands fa-facebook"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram"></i></a>
+                    <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href=""><i class="fa-brands fa-youtube"></i></a>
+                </div>       
+          
+            
+            <div class="footernav">
+                <ul>
+                    <li><a href="about.html">About Us</a> </li>
+                    <li><a href="contact.html">Contract Us</a> </li>
+                    <li><a href="privacy.html">Privacy Policy</a> </li>
+                    <li><a href="tms.html">Terms & Conditions</a> </li>
+                </ul>
+            </div>
+    
+            
+        </div>
+        <div class="footerbottm">
+            <p style="font-family: 'Times New Roman', Times, serif;">Copyright @ 2024 - Style Vista - All Right Reserved. Concept,Design & Developed by Group No 03, SLIIT Kurunegala.</p>
+
+        </div>
+    </footer>
+</body>
+</html>

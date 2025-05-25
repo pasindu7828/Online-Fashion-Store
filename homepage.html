@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Online Shopping Store</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="style.css">
+         <style>
+            body {
+              
+              margin: 0;
+              padding: 0;
+            }
+            .container {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-around;
+              padding: 20px;
+            }
+            .card {
+              width: 250px;
+              margin: 20px;
+              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+              transition: transform 0.3s;
+            }
+            .card:hover {
+              transform: scale(1.05);
+            }
+            .card img {
+              width: 100%;
+              height: auto;
+            }
+            .card-content {
+              padding: 15px;
+            }
+            .btn-container {
+              display: flex;
+              justify-content: space-between;
+              margin-top: 15px;
+            }
+            .btn {
+              padding: 10px 20px;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+            }
+            .btn-buy {
+              background-color: #1d02a3;
+              color: white;
+            }
+            .btn-cart {
+              background-color: #d72417;
+              color: white;
+            }
+            .btn:hover {
+              opacity: 0.8;
+            }
+  
+            /* CSS for button styling */
+        .button {
+          display: inline-block;
+          padding: 10px 20px;
+          font-size: 16px;
+          cursor: pointer;
+          text-align: center;
+          text-decoration: none;
+          outline: none;
+          color: #fff;
+          background-color: #007bff;
+          border: none;
+          border-radius: 5px;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+          transition: background-color 0.3s;
+        }
+      
+        .button:hover {
+          background-color: #0056b3;
+        }
+      
+        /* Additional styling for multiple buttons */
+        .button-secondary {
+          background-color: #6c757d;
+        }
+      
+        .button-secondary:hover {
+          background-color: #545b62;
+        }
+     
+          </style>
+
+    </head>
+
+    <body>
+      <!-- Copy This Nav Bar For Every Page -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="checkLoginStatus.js"></script>
+        <nav>
+            <img class="name" src="images/clothing.png"> 
+           
+            <ul class="sidebar"> 
+                <li><a class="active" href="homepage.html">HOME</a> </li>
+                <li><a href="men.html">MEN</a> </li>
+                <li><a href="women.html">WOMEN</a> </li>
+                <li><a href="kids.html">KIDS</a> </li>
+                <li><a href="cartCheckout.html">CART</a></li>
+                <li><a href="review.html">Product Review</a></li>
+                <li><a href="contactUs.html">Customer Feedback</a></li>
+                <li><a href="offers.html">OFFERS</a> </li>
+                <li><a href="nwa.html">NEW ARRIVALS</a> </li>
+                <li><a id ="loginStatus" href="AuthCheck.html">LOGIN|SIGNUP</a> </li>
+                <div class="search-container">
+                <input type="text" placeholder="Search...">
+                <button type="submit">Search</button>
+                <button type="submit">add cart</button>
+                </div>
+            </ul>
+          </nav>
+        <!-- Up to here -->
+            
+            
+            
+            
+    <main>
+        <img class="pjt1" src="images/STYLE VISTA.png">
+    </main>
+    <br>
+    <br>
+
+    <h1 class="bestselling">BEST SELLING</h1>
+    <br>
+    <br>
+    <div class="intro">
+        <h2 para="intro">Welcome to Style Vista, your ultimate destination for all things fashion! Step into a world where style meets convenience, and where your wardrobe dreams come to life with just a click. Explore our carefully curated collection of the latest trends, timeless classics, and must-have pieces that effortlessly blend sophistication with comfort.</h2>
+    </div>
+
+
+    <br>
+    <br>
+
+    <br>
+   <br>
+   <br>
+
+        <div class="container">
+          
+          <div class="card" >
+           <a href="men.html"> <img src="images/men.jpg" alt="Image 2"></a>
+            <div class="card-content">
+              <a href="men.html"><h3 style="font-family: Arial, Helvetica, sans-serif;text-align: center;color: #1d02a3;">MEN</h3></a><br>
+              
+              <div class="btn-container">
+                
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <a href="women.html"><img src="images/men.jpg" alt="Image 3"></a>
+            <div class="card-content">
+              <a href="women.html"><h3 style="font-family: Arial, Helvetica, sans-serif;text-align: center;color: #1d02a3;">WOMEN</h3></a><br>
+              
+              <div class="btn-container">
+                
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <a href="kids.html"><img src="images/men.jpg" alt="Image 4"></a>
+            <div class="card-content">
+             <a href="kids.html"> <h3 style="font-family: Arial, Helvetica, sans-serif;text-align: center;color: #1d02a3;">KIDS</h3></a><br>
+             
+              <div class="btn-container">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <br>
+        
+        <div class="container">
+            <div class="card">
+              <a href="offers.html"><img src="images/men.jpg" alt="Image 1">
+              <div class="card-content">
+                <a href="offers.html"><h3 style="font-family: Arial, Helvetica, sans-serif;text-align: center;color: #1d02a3;">OFFERS</h3></a><br>
+             
+                <div class="btn-container">
+                 
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <a href="nwa.html"><img src="images/men.jpg" alt="Image 2"></a>
+              <div class="card-content">
+              <a href="nwa.html"><h3 style="font-family: Arial, Helvetica, sans-serif;text-align: center;color: #1d02a3;">NEW ARRIVALS</h3></a><br>
+              
+                <div class="btn-container">
+
+                </div>
+              </div>
+            </div>
+            
+            
+          </div>
+
+    <br>
+    <br>
+    <hr>
+    <br>
+
+    <footer>
+       
+        <div class="footercontainer">
+           
+                <img class="name" src="images/clothing.png"> 
+                <br>
+                <p style="font-family: 'Times New Roman', Times, serif;color: aliceblue;">The No 1 Fashion Store</p>
+
+                <p style="font-family:'Times New Roman', Times, serif ;color: aliceblue;">in Sri Lanka</p>
+                <div class="socialicons">
+                    <a href=""><i class="fa-brands fa-facebook"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram"></i></a>
+                    <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href=""><i class="fa-brands fa-youtube"></i></a>
+                </div>       
+          
+            
+            <div class="footernav">
+                <ul>
+                    <li><a href="about.html">About Us</a> </li>
+                    <li><a href="contact.html">Contract Us</a> </li>
+                    <li><a href="privacy.html">Privacy Policy</a> </li>
+                    <li><a href="tms.html">Terms & Conditions</a> </li>
+                </ul>
+            </div>
+    
+            
+        </div>
+        <div class="footerbottm">
+            <p style="font-family: 'Times New Roman', Times, serif;">Copyright @ 2024 - Style Vista - All Right Reserved. Concept,Design & Developed by Group No 03, SLIIT Kurunegala.</p>
+
+        </div>
+    </footer>
+
+
+    </body>
+</html>

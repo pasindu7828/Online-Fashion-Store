@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Online Shopping Store</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+         <link rel="stylesheet" href="style.css">
+
+         <style>
+          body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+          }
+          .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+          }
+          .contact-section {
+            display: flex;
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+          }
+          .contact-image {
+            flex: 1;
+            padding: 20px;
+          }
+          .contact-image img {
+            width: 100%;
+            border-radius: 10px 0 0 10px;
+          }
+          .contact-form {
+            flex: 1;
+            padding: 20px;
+          }
+          .contact-form h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+          }
+          .contact-form input[type="text"],
+          .contact-form input[type="email"],
+          .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+          }
+          .contact-form textarea {
+            height: 150px;
+          }
+          .contact-form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+          }
+          .contact-form button:hover {
+            background-color: #0056b3;
+          }
+        </style>
+
+    </head>
+
+    <body>
+
+      <nav>
+        <img class="name" src="images/clothing.png"> 
+
+        
+       
+        <ul class="sidebar"> 
+            <li><a class="active" href="homepage.html">HOME</a> </li>
+            <li><a href="men.html">MEN</a> </li>
+            <li><a href="women.html">WOMEN</a> </li>
+            <li><a href="kids.html">KIDS</a> </li>
+        
+            <li><a href="offers.html">OFFERS</a> </li>
+            <li><a href="nwa.html">NEW ARRIVALS</a> </li>
+            <li><a href="login.html">LOGIN|SIGNUP</a> </li>
+            <div class="search-container">
+                <input type="text" placeholder="Search...">
+                <button type="submit">Search</button>
+                <button type="submit">add cart</button>
+            </div>
+        </ul>
+                   
+    </nav>
+
+   
+
+    <div class="container">
+      <div class="contact-section">
+          <div class="contact-form">
+              <h2>Contact Us</h2>
+              <form id="contactForm">
+                  <input type="text" id="name" name="name" placeholder="Your Name" required><br>
+                  <input type="email" id="email" name="email" placeholder="Your Email" required><br>
+                  <input type="text" id="phonenumber" name="phonenumber" placeholder="Your Phone number" required><br>
+                  <textarea id="message" name="message" placeholder="Your Message" required></textarea><br>
+                  <button type="submit">Send Message</button>
+              </form>
+          </div>
+      </div>
+  </div>
+  
+  <script>
+  $(document).ready(function() {
+      $('#contactForm').submit(function(event) {
+          // Prevent default form submission
+          event.preventDefault();
+          
+          // Collect form data
+          var formData = $(this).serialize();
+          
+          // Send AJAX request
+          $.ajax({
+              type: 'POST',
+              url: 'contactUs.php',
+              data: formData,
+              success: function(response) {
+                  // Handle success response
+                  alert('Message sent successfully!');
+                  // You can redirect to another page if needed
+                  // window.location.href = 'thankyou.html';
+              },
+              error: function(xhr, status, error) {
+                  // Handle error
+                  console.error(xhr.responseText);
+                  alert('An error occurred. Please try again later.');
+              }
+          });
+      });
+  });
+  </script>
+
+  
+    <footer>
+         
+      <div class="footercontainer">
+         
+              <img class="name" src="images/clothing.png"> 
+              <br>
+              <p style="font-family: 'Times New Roman', Times, serif;color: aliceblue;">The No 1 Fashion Store</p>
+
+              <p style="font-family:'Times New Roman', Times, serif ;color: aliceblue;">in Sri Lanka</p>
+              <div class="socialicons">
+                  <a href=""><i class="fa-brands fa-facebook"></i></a>
+                  <a href=""><i class="fa-brands fa-instagram"></i></a>
+                  <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                  <a href=""><i class="fa-brands fa-youtube"></i></a>
+              </div>       
+        
+          
+          <div class="footernav">
+              <ul>
+                  <li><a href="about.html">About Us</a> </li>
+                  <li><a href="contact.html">Contract Us</a> </li>
+                  <li><a href="privacy.html">Privacy Policy</a> </li>
+                  <li><a href="tms.html">Terms & Conditions</a> </li>
+              </ul>
+          </div>
+  
+          
+      </div>
+      <div class="footerbottm">
+          <p style="font-family: 'Times New Roman', Times, serif;">Copyright @ 2024 - Style Vista - All Right Reserved. Concept,Design & Developed by Group No 03, SLIIT Kurunegala.</p>
+
+      </div>
+  </footer>
+
+
+  </body>
+</html>
+
+    
+
+
+
+    </body>

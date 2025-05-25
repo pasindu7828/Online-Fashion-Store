@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function logout() {
+            $.ajax({
+                url: 'adminSessionsReset.php',
+                type: 'GET',
+                success: function() {
+                },
+                error: function(xhr, status, error) {
+                    alert("System Login Failiure !:"+error);
+                    window.location.href="admin_login.html";
+                    console.error('Error:', error);
+                }
+            });
+        }
+        $(document).ready(function(){
+            $.ajax({
+                url: "check_admin_login.php", // PHP script to call
+                type: "GET", // or "POST" depending on your needs
+                success: function(data){
+                    // If the call is successful, update the content of the admin_dashboard div
+                    logout();
+                    console.log("Admin Logged In !");
+                },
+                error: function(xhr, status, error) {
+                    // If there's an error, you can handle it here
+                    window.location.href="admin_login.html";
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+        </script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>User Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            flex-direction: column; /* Added */
+        }
+        .contact-section {
+            margin-bottom: 20px; /* Added */
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 20px; /* Added */
+        }
+        .card {
+            width: 250px;
+            margin: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card h2 {
+            margin-top: 0;
+            padding: 15px;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+        }
+        .card p {
+            padding: 20px;
+            text-align: center;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        /* Input field styling */
+        #sqlQuery {
+            width: 400px;
+        }
+        /* Button styling */
+        #executeSQL {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #executeSQL:hover {
+            background-color: #0056b3;
+        }
+        #addAdmin{
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #addAdmin:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <img class="name" src="images/clothing.png"> 
+        <ul class="sidebar"> 
+            <li><a href="admin.html"><i class="fas fa-chart-bar"></i> Analytics</a></li>
+            <li><a href="admin_users.html"><i class="fas fa-users"></i> Users</a></li>
+            <li><a href="admin_payments.html"><i class="fas fa-money-bill-wave"></i> Payments</a></li>
+            <li><a href="admin_cusRev.html"><i class="fas fa-comments"></i> Customer Reviews</a></li>
+            <li><a href="admin_productRev.html"><i class="fas fa-comments"></i> Product Reviews</a></li>
+            <li><a href="admin_settings.html" class="active"><i class="fas fa-cog"></i> Manage Admins</a></li>
+            <li><a href="admin_logout.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="contact-section" id="sqlSection"> <!-- Moved SQL section here -->
+            <input type="text" id="sqlQuery" placeholder="Enter SQL command">
+            <button id="executeSQL">Execute SQL</button>
+            <button id="addAdmin">Sign Up</button>
+        </div>
+        <table id="userTable">
+            <thead>
+                <tr>
+                    <th>adminID</th>
+                    <th>adminUserName</th>
+                    <th>adminPassword</th>
+                    <th>adminPasshint</th>
+                    <th>adminEmail</th>
+                    <th>Action</th> <!-- Added -->
+                </tr>
+            </thead>
+            <tbody id="userData">
+            </tbody>
+        </table>
+        
+    </div>
+    <script>
+        $(document).ready(function(){
+            function deleteAdmin(adminID) {
+                $.ajax({
+                    type: "POST",
+                    url: "deleteAdmin.php",
+                    data: {
+                        action: "delete",
+                        id: adminID
+                    },
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.success) {
+                            executeSQLQuery("SELECT * FROM admin"); // Refresh data
+                            alert(response.success);
+                        } else {
+                            alert(response.error);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error deleting admin:", error);
+                    }
+                });
+            }
+
+            $('#userData').on('click', '.delete-button', function() {
+                var adminID = $(this).closest('tr').find('td:first').text();
+                if (confirm('Are you sure you want to delete this admin?')) {
+                    deleteAdmin(adminID);
+                    window.location.href="index.html";
+                }
+            });
+
+            function redirect() {
+                window.location.href="admin_signup.html";
+            }
+
+            function executeSQLQuery(sqlQuery) {
+                $.ajax({
+                    type: "POST",
+                    url: "user.php",
+                    data: { sqlQuery: sqlQuery },
+                    dataType: "json",
+                    success: function(admin){
+                        $('#userData').empty();
+                        $.each(admin, function(index, admin){
+                            var row = '<tr>' +
+                                '<td>' + admin.adminID + '</td>' +
+                                '<td>' + admin.adminUserName + '</td>' +
+                                '<td>' + admin.adminPassword + '</td>' +
+                                '<td>' + admin.adminPasshint + '</td>' +
+                                '<td>' + admin.adminEmail + '</td>' +
+                                '<td><button class="delete-button">Delete</button></td>' + // Delete button added
+                                '</tr>';
+                            $('#userData').append(row);
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error fetching admin data:", error);
+                        window.location.href="admin_settings.html";
+                    }
+                });
+            }
+
+            $('#executeSQL').click(function() {
+                var sqlQuery = $('#sqlQuery').val().trim();
+                if (sqlQuery !== '') {
+                    executeSQLQuery(sqlQuery);
+                }
+            });
+
+            $('#addAdmin').click(function() {
+                redirect();
+            });
+
+            executeSQLQuery("SELECT * FROM admin");
+        });
+
+    </script>
+</body>
+</html>
